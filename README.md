@@ -1,6 +1,6 @@
-# x-boot-front
+﻿# x-boot-front
 
-> 作者目前大四 且为后台开发 能力经验有限 如有错误欢迎指正 期待您的捐赠支持！
+> 作者目前大四且为后台开发 能力经验有限 如有错误欢迎指正 期待您的捐赠支持！
 
 ### [宣传视频](https://www.bilibili.com/video/av23121122/)
 - 作者亲自制作 [点我观看](https://www.bilibili.com/video/av23121122/)
