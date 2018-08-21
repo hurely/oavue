@@ -7,30 +7,29 @@
             </Row>
             <Alert type="error" show-icon v-if="error">{{errorMsg}}</Alert>
             <Row class="login-form">
-                    <TabPane label="账户密码登录" name="username" icon="person">
-                         <Form ref="usernameLoginForm" :model="form" :rules="rules" class="form">
-                            <FormItem prop="username">
-                                <Input v-model="form.username" size="large" clearable placeholder="请输入用户名">
-                                    <span slot="prepend">
-                                        <Icon :size="16" type="person"></Icon>
-                                    </span>
-                                </Input>
-                            </FormItem>
-                            <FormItem prop="password">
-                                <Input type="password" v-model="form.password" size="large" clearable  placeholder="请输入密码">
-                                    <span slot="prepend">
-                                        <Icon :size="14" type="locked"></Icon>
-                                    </span>
-                                </Input>
-                            </FormItem>
-                        </Form>
-                    </TabPane>
+
+             <Form ref="usernameLoginForm" :model="form" :rules="rules" class="form">
+                <FormItem prop="username">
+                    <Input v-model="form.username" size="large" clearable placeholder="请输入用户名">
+                        <span slot="prepend">
+                            <Icon :size="16" type="person"></Icon>
+                        </span>
+                    </Input>
+                </FormItem>
+                <FormItem prop="password">
+                    <Input type="password" v-model="form.password" size="large" clearable  placeholder="请输入密码">
+                        <span slot="prepend">
+                            <Icon :size="14" type="locked"></Icon>
+                        </span>
+                    </Input>
+                </FormItem>
+            </Form>
+
 
 
 
                 <Row type="flex" justify="space-between" class="code-row-bg">
                     <Checkbox v-model="saveLogin" size="large">自动登录</Checkbox>
-                    <a class="forget-pass" @click="showAccount">忘记密码</a>
                     <router-link to="/regist"><a class="forget-pass">注册账户</a></router-link>
                 </Row>
 
@@ -66,7 +65,6 @@ export default {
     return {
       error: false,
       errorMsg: "",
-      tabName: "username",
       saveLogin: true,
       loading: false,
       sended: false,
@@ -122,7 +120,6 @@ export default {
       }, 1000);
     },
     submitLogin() {
-      if (this.tabName === "username") {
         this.$refs.usernameLoginForm.validate(valid => {
           if (valid) {
             this.loading = true;
@@ -163,30 +160,8 @@ export default {
             });
           }
         });
-      } else if (this.tabName === "mobile") {
-        this.$refs.mobileLoginForm.validate(valid => {
-          if (valid) {
-            if (this.form.verifyCode === "") {
-              this.errorCode = "验证码不能为空";
-              return;
-            } else {
-              this.errorCode = "";
-            }
-            this.showErrorMsg("页面演示，暂不支持短信登录");
-          }
-        });
-      }
-    },
-    showAccount() {
-      this.$Notice.info({
-        title: "体验账号密码",
-        desc:
-          "账号1：test 密码：123456 <br>账号2：test2 密码：123456 已开放注册！"
-      });
+
     }
-  },
-  mounted() {
-    this.showAccount();
   }
 };
 </script>
